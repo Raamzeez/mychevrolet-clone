@@ -1,74 +1,126 @@
-import { Image, StyleSheet, Platform } from 'react-native';
+import { useState } from "react";
+import { Poppins_400Regular } from "@expo-google-fonts/poppins";
+import {
+  StyleSheet,
+  ScrollView,
+  Image,
+  Text,
+  View,
+  TouchableOpacity,
+} from "react-native";
+import Entypo from "@expo/vector-icons/Entypo";
 
-import { HelloWave } from '@/components/HelloWave';
-import ParallaxScrollView from '@/components/ParallaxScrollView';
-import { ThemedText } from '@/components/ThemedText';
-import { ThemedView } from '@/components/ThemedView';
+const controls = ["My Vehicle", "Controls", "Home Center"];
 
 export default function HomeScreen() {
+  const [selectedControl, setSelectedControl] = useState(0);
+
   return (
-    <ParallaxScrollView
-      headerBackgroundColor={{ light: '#A1CEDC', dark: '#1D3D47' }}
-      headerImage={
+    <ScrollView style={styles.container}>
+      <View
+        style={{
+          flexDirection: "row",
+          alignItems: "center",
+          justifyContent: "space-between",
+        }}
+      >
         <Image
-          source={require('@/assets/images/partial-react-logo.png')}
-          style={styles.reactLogo}
+          source={require("@/assets/images/chevroletlogo.png")}
+          style={styles.logo}
         />
-      }>
-      <ThemedView style={styles.titleContainer}>
-        <ThemedText type="title">Welcome!</ThemedText>
-        <HelloWave />
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 1: Try it</ThemedText>
-        <ThemedText>
-          Edit <ThemedText type="defaultSemiBold">app/(tabs)/index.tsx</ThemedText> to see changes.
-          Press{' '}
-          <ThemedText type="defaultSemiBold">
-            {Platform.select({
-              ios: 'cmd + d',
-              android: 'cmd + m',
-              web: 'F12'
-            })}
-          </ThemedText>{' '}
-          to open developer tools.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 2: Explore</ThemedText>
-        <ThemedText>
-          Tap the Explore tab to learn more about what's included in this starter app.
-        </ThemedText>
-      </ThemedView>
-      <ThemedView style={styles.stepContainer}>
-        <ThemedText type="subtitle">Step 3: Get a fresh start</ThemedText>
-        <ThemedText>
-          When you're ready, run{' '}
-          <ThemedText type="defaultSemiBold">npm run reset-project</ThemedText> to get a fresh{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> directory. This will move the current{' '}
-          <ThemedText type="defaultSemiBold">app</ThemedText> to{' '}
-          <ThemedText type="defaultSemiBold">app-example</ThemedText>.
-        </ThemedText>
-      </ThemedView>
-    </ParallaxScrollView>
+        <View style={styles.profileContainer}>
+          <Text style={styles.profileText}>CR</Text>
+        </View>
+      </View>
+      <Text style={styles.title}>2024 TAHOE HIGH COUNTRY</Text>
+      <Text style={styles.title}>57% | 175 mi</Text>
+      <Image
+        source={require("@/assets/images/car.png")}
+        style={styles.carImage}
+      />
+      <View style={styles.controlsContainer}>
+        {[0, 1, 2].map((controlIndex) => {
+          return (
+            <TouchableOpacity
+              onPress={() => setSelectedControl(controlIndex)}
+              key={controlIndex}
+              style={[
+                styles.controlButton,
+                selectedControl == controlIndex && { borderBottomWidth: 1 },
+              ]}
+            >
+              <Text style={styles.controlButtonText}>
+                {controls[controlIndex]}
+              </Text>
+            </TouchableOpacity>
+          );
+        })}
+      </View>
+      <View style={styles.controlsContainer}>
+        <TouchableOpacity
+          style={{
+            height: 40,
+            width: 40,
+            borderRadius: 20,
+            backgroundColor: "#333",
+            justifyContent: "center",
+            alignItems: "center",
+          }}
+        >
+          <Entypo name="lock" size={18} color="lightgrey" />
+        </TouchableOpacity>
+      </View>
+    </ScrollView>
   );
 }
 
 const styles = StyleSheet.create({
-  titleContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    gap: 8,
+  container: {
+    flex: 1,
+    backgroundColor: "#212121",
+    paddingVertical: 20,
+    paddingHorizontal: 10,
   },
-  stepContainer: {
-    gap: 8,
-    marginBottom: 8,
+  controlsContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+    paddingHorizontal: 10,
+    marginVertical: 10,
   },
-  reactLogo: {
-    height: 178,
-    width: 290,
-    bottom: 0,
-    left: 0,
-    position: 'absolute',
+  controlButton: {
+    paddingVertical: 15,
+    borderBottomWidth: 0,
+    borderBottomColor: "white",
+  },
+  controlButtonText: {
+    color: "white",
+    fontWeight: "bold",
+  },
+  profileContainer: {
+    height: 40,
+    width: 40,
+    borderRadius: 20,
+    justifyContent: "center",
+    alignItems: "center",
+    backgroundColor: "grey",
+  },
+  profileText: {
+    fontWeight: "bold",
+    color: "white",
+  },
+  title: {
+    fontSize: 15,
+    fontWeight: "bold",
+    color: "white",
+  },
+  logo: {
+    width: 70,
+    height: 40,
+  },
+  carImage: {
+    width: 200,
+    height: 100,
+    marginHorizontal: "auto",
   },
 });
