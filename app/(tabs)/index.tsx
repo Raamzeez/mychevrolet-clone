@@ -9,11 +9,11 @@ import {
   StyleSheet,
   ScrollView,
   Image,
-  Text,
   View,
   TouchableOpacity,
 } from "react-native";
 import Entypo from "@expo/vector-icons/Entypo";
+import { Text } from "@/components/StyledText";
 
 const controls = ["My Vehicle", "Controls", "Home Center"];
 
@@ -45,8 +45,8 @@ export default function HomeScreen() {
           <Text style={styles.profileText}>CR</Text>
         </View>
       </View>
-      <Text style={[styles.title]}>2024 TAHOE HIGH COUNTRY</Text>
-      <Text style={styles.title}>57% | 175 mi</Text>
+      <Text bold>2024 TAHOE HIGH COUNTRY</Text>
+      <Text>57% | 175 mi</Text>
       <Image
         source={require("@/assets/images/car.png")}
         style={styles.carImage}
@@ -85,18 +85,29 @@ export default function HomeScreen() {
       </View>
       <View style={styles.serviceCardContainer}>
         <Text style={styles.title}>Everything Looks Good</Text>
-        <Text style={styles.title}>
+        <Text style={[styles.title, { fontSize: 13, color: "grey" }]}>
           Your vehicle is secured and has no health issues
         </Text>
         <View
           style={{
             height: 5,
             width: "100%",
-            backgroundColor: "skyblue",
+            backgroundColor: "grey",
             borderRadius: 10,
             marginVertical: 10,
+            marginTop: 20,
           }}
-        ></View>
+        >
+          <View
+            style={{
+              height: "100%",
+              width: "57%",
+              backgroundColor: "skyblue",
+              borderRadius: 10,
+            }}
+          ></View>
+        </View>
+        <Text bold>57% Oil Life</Text>
       </View>
     </ScrollView>
   );
@@ -128,7 +139,6 @@ const styles = StyleSheet.create({
   },
   serviceCardContainer: {
     width: "100%",
-    height: 150,
     backgroundColor: "#333",
     borderRadius: 10,
     marginVertical: 10,
