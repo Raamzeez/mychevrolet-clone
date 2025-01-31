@@ -1,4 +1,12 @@
-# Welcome to your Expo app 👋
+# myChevrolet UI Clone
+
+This is a UI clone of the home page for the myChevrolet mobile app to practice React Native and Expo
+
+Current Progress Image
+
+<img src="assets/images/progress.png" height="500" />
+
+## Welcome to your Expo app 👋
 
 This is an [Expo](https://expo.dev) project created with [`create-expo-app`](https://www.npmjs.com/package/create-expo-app).
 
