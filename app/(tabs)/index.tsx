@@ -88,24 +88,8 @@ export default function HomeScreen() {
         <Text style={[styles.title, { fontSize: 13, color: "grey" }]}>
           Your vehicle is secured and has no health issues
         </Text>
-        <View
-          style={{
-            height: 5,
-            width: "100%",
-            backgroundColor: "grey",
-            borderRadius: 10,
-            marginVertical: 10,
-            marginTop: 20,
-          }}
-        >
-          <View
-            style={{
-              height: "100%",
-              width: "57%",
-              backgroundColor: "skyblue",
-              borderRadius: 10,
-            }}
-          ></View>
+        <View style={styles.progressBarContainer}>
+          <View style={styles.progressBar} />
         </View>
         <Text bold>57% Oil Life</Text>
       </View>
@@ -164,6 +148,20 @@ const styles = StyleSheet.create({
     color: "lightgrey",
     fontFamily: "Poppins_400Regular",
     marginTop: 5,
+  },
+  progressBarContainer: {
+    height: 5,
+    width: "100%",
+    backgroundColor: "grey",
+    borderRadius: 10,
+    marginVertical: 10,
+    marginTop: 20,
+  },
+  progressBar: {
+    height: "100%",
+    width: "57%",
+    backgroundColor: "skyblue",
+    borderRadius: 10,
   },
   profileContainer: {
     height: 40,
