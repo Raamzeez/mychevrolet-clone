@@ -13,6 +13,7 @@ import {
   TouchableOpacity,
 } from "react-native";
 import Entypo from "@expo/vector-icons/Entypo";
+import FontAwesome5 from "@expo/vector-icons/FontAwesome5";
 import { Text } from "@/components/StyledText";
 
 const controls = ["My Vehicle", "Controls", "Home Center"];
@@ -78,7 +79,7 @@ export default function HomeScreen() {
         </View>
         <View style={{ alignItems: "center" }}>
           <TouchableOpacity style={styles.controlButton}>
-            <Entypo name="lock" size={21} color="lightgrey" />
+            <FontAwesome5 name="unlock-alt" size={21} color="lightgrey" />
           </TouchableOpacity>
           <Text style={styles.controlButtonText}>Unlock</Text>
         </View>
@@ -92,6 +93,21 @@ export default function HomeScreen() {
           <View style={styles.progressBar} />
         </View>
         <Text bold>57% Oil Life</Text>
+        <View style={styles.divider} />
+        <View style={styles.serviceButtonsContainer}>
+          <TouchableOpacity style={styles.serviceButton}>
+            <Text bold style={{ color: "dodgerblue" }}>
+              Schedule Service
+            </Text>
+          </TouchableOpacity>
+          <TouchableOpacity
+            style={[styles.serviceButton, { backgroundColor: "transparent" }]}
+          >
+            <Text bold style={{ color: "lightgrey" }}>
+              {"Vehicle Status >"}
+            </Text>
+          </TouchableOpacity>
+        </View>
       </View>
     </ScrollView>
   );
@@ -129,6 +145,19 @@ const styles = StyleSheet.create({
     paddingVertical: 10,
     paddingHorizontal: 15,
   },
+  serviceButtonsContainer: {
+    flexDirection: "row",
+    alignItems: "center",
+    justifyContent: "space-between",
+  },
+  serviceButton: {
+    padding: 7,
+    backgroundColor: "#4a4a4a",
+    borderRadius: 7,
+    width: 150,
+    justifyContent: "center",
+    alignItems: "center",
+  },
   controlsContainer: {
     flexDirection: "row",
     alignItems: "center",
@@ -157,6 +186,12 @@ const styles = StyleSheet.create({
     marginVertical: 10,
     marginTop: 20,
   },
+  divider: {
+    width: "100%",
+    height: 1,
+    backgroundColor: "#555555",
+    marginVertical: 20,
+  },
   progressBar: {
     height: "100%",
     width: "57%",
@@ -169,7 +204,7 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     justifyContent: "center",
     alignItems: "center",
-    backgroundColor: "grey",
+    backgroundColor: "#555555",
   },
   profileText: {
     fontWeight: "bold",
